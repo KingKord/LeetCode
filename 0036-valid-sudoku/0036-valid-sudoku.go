@@ -1,4 +1,3 @@
-
 func isValidSudoku(board [][]byte) bool {
 	boxes := make([]map[byte]struct{}, 3)
 	var columns []map[byte]struct{}
