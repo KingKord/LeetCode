@@ -21,7 +21,6 @@ func isValidSudoku(board [][]byte) bool {
 			}
 			_, ok := row[now]
 			if ok {
-				fmt.Println(i, j, "row", now)
 				return false
 			}
 
@@ -29,23 +28,16 @@ func isValidSudoku(board [][]byte) bool {
 
 			_, ok = columns[j][now]
 			if ok {
-				fmt.Println(i, j, "columns")
 				return false
 			}
 			columns[j][now] = struct{}{}
 
 			_, ok = boxes[j/3][now]
 			if ok {
-				fmt.Println(i, j, "boxes")
 				return false
 			}
 			boxes[j/3][now] = struct{}{}
 		}
-        for j := 0; j < 3; j++ {
-			fmt.Print(boxes[j]," ")
-		}
-        fmt.Println()
-
 	}
 
 	return true
