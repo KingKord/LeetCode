@@ -1,26 +1,17 @@
 func topKFrequent(nums []int, k int) []int {
-	var (
-		hashmap = make(map[int]int)
-		res     = make([]int, k)
-	)
-
+	intMap := make(map[int]int)
 	for _, num := range nums {
-		hashmap[num]++
+		intMap[num]++
 	}
 
-	for i := 0; i < k; i++ {
-		count := 0
-		el := 0
-
-		for key, occurrence := range hashmap {
-			if occurrence > count {
-				el = key
-				count = occurrence
-			}
-		}
-		res[i] = el
-		delete(hashmap, el)
+	var res []int
+	for i := range intMap {
+		res = append(res, i)
 	}
+	
+	sort.Slice(res, func(i, j int) bool {
+		return intMap[res[i]] > intMap[res[j]]
+	})
 
-	return res
+	return res[:k]
 }
